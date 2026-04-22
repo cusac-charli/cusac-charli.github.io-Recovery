@@ -579,19 +579,8 @@
                   onClick={() => setGameState('prep')}
                   title="Click anywhere to skip"
                 >
+                  {/* Step 0: Initial standing character at table */}
                   {storyStep === 0 && (
-                    <div className="w-full max-w-4xl flex flex-col items-center animate-in fade-in duration-500 overflow-visible pointer-events-none">
-                      <div className="w-full aspect-[21/9] border-4 border-slate-400 bg-white rounded-2xl relative shadow-xl overflow-hidden travel-bag-bg transform scale-95 mb-6">
-                        <svg className="absolute inset-0 w-full h-full pointer-events-none stroke-slate-300" fill="none" strokeWidth="3"><line x1="48%" y1="2%" x2="48%" y2="98%" strokeDasharray="8 8" /><line x1="52%" y1="2%" x2="52%" y2="98%" strokeDasharray="8 8" /><ellipse cx="71.5%" cy="37.5%" rx="12%" ry="32%" /><path d="M 88% 25% L 93% 25% L 93% 30% L 95% 33% L 95% 82% A 2% 2% 0 0 1 86% 82% L 86% 33% L 88% 30% Z" /></svg>
-                        {Object.values(TRAVEL_ITEMS).map((item) => (<div key={item.id} className="absolute border-[3px] rounded-2xl flex items-center justify-center border-slate-300 border-dashed bg-slate-50/50 overflow-hidden" style={item.slot}><item.Icon size="60%" className="text-blue-500 anim-fade-slow" /></div>))}
-                      </div>
-                      <div className="bg-white border-[4px] border-[#0ea5e9] rounded-[2rem] p-6 w-[95%] shadow-2xl relative z-[150] animate-in slide-in-from-bottom-4 duration-300 flex justify-between items-end pointer-events-auto cursor-default" onClick={(e) => e.stopPropagation()}>
-                        <p className="text-[#0ea5e9] font-bold text-base sm:text-xl leading-snug whitespace-pre-line flex-1">{STORY_LINES[storyStep]}</p>
-                        <ChevronDown size={28} className="text-[#0ea5e9] animate-bounce ml-4 flex-shrink-0" />
-                      </div>
-                    </div>
-                  )}
-                  {(storyStep === 1 || storyStep === 2) && (
                     <div className="w-full max-w-3xl aspect-[21/9] border-[5px] border-[#0ea5e9] bg-white rounded-2xl relative shadow-2xl mb-8 animate-in slide-in-from-bottom-4 duration-500 overflow-visible pointer-events-none">
                       <div className="absolute inset-0 pointer-events-none overflow-hidden">
                         <div className="absolute top-10 left-10 w-32 h-32 border-[5px] border-[#0ea5e9] flex bg-slate-50"><div className="w-1/2 border-r-[5px] border-[#0ea5e9] h-full"></div><div className="absolute top-1/2 w-full border-t-[5px] border-[#0ea5e9]"></div></div>
@@ -601,12 +590,43 @@
                         <div className="absolute bottom-4 left-8 w-40 h-48 z-20"><CharacterIntro /></div>
                       </div>
                       <div className="absolute top-[-30px] right-[-20px] sm:top-[-40px] sm:right-[-40px] bg-white border-[4px] border-[#0ea5e9] rounded-3xl p-6 w-[60%] max-w-[320px] shadow-2xl z-[150] animate-in zoom-in duration-300 pointer-events-auto cursor-default" onClick={(e) => e.stopPropagation()}>
-                         <p className="text-[#0ea5e9] font-bold text-sm sm:text-lg leading-snug">{STORY_LINES[storyStep]}</p>
+                         <p className="text-[#0ea5e9] font-bold text-sm sm:text-lg leading-snug">{STORY_LINES[0]}</p>
                          <div className="absolute -bottom-[22px] left-10 w-0 h-0 border-l-[18px] border-r-[18px] border-t-[24px] border-l-transparent border-r-transparent border-t-[#0ea5e9]"></div>
                       </div>
                     </div>
                   )}
-                  <button onClick={(e) => { e.stopPropagation(); if (storyStep < 2) setStoryStep(p => p + 1); else setGameState('prep'); }} className="mt-8 bg-[#0ea5e9] hover:bg-[#0284c7] text-white px-12 py-4 rounded-full font-black text-xl shadow-xl z-[160] relative pointer-events-auto">Next</button>
+
+                  {/* Step 1: Electronic case closeup */}
+                  {storyStep === 1 && (
+                    <div className="w-full max-w-4xl flex flex-col items-center animate-in fade-in duration-500 overflow-visible pointer-events-none">
+                      <div className="w-full aspect-[21/9] border-4 border-slate-400 bg-white rounded-2xl relative shadow-xl overflow-hidden travel-bag-bg transform scale-95 mb-6">
+                        <svg className="absolute inset-0 w-full h-full pointer-events-none stroke-slate-300" fill="none" strokeWidth="3"><line x1="48%" y1="2%" x2="48%" y2="98%" strokeDasharray="8 8" /><line x1="52%" y1="2%" x2="52%" y2="98%" strokeDasharray="8 8" /><ellipse cx="71.5%" cy="37.5%" rx="12%" ry="32%" /><path d="M 88% 25% L 93% 25% L 93% 30% L 95% 33% L 95% 82% A 2% 2% 0 0 1 86% 82% L 86% 33% L 88% 30% Z" /></svg>
+                        {Object.values(TRAVEL_ITEMS).map((item) => (<div key={item.id} className="absolute border-[3px] rounded-2xl flex items-center justify-center border-slate-300 border-dashed bg-slate-50/50 overflow-hidden" style={item.slot}><item.Icon size="60%" className="text-blue-500 anim-fade-slow" /></div>))}
+                      </div>
+                      <div className="bg-white border-[4px] border-[#0ea5e9] rounded-[2rem] p-6 w-[95%] shadow-2xl relative z-[150] animate-in slide-in-from-bottom-4 duration-300 flex justify-between items-end pointer-events-auto cursor-default" onClick={(e) => e.stopPropagation()}>
+                        <p className="text-[#0ea5e9] font-bold text-base sm:text-xl leading-snug whitespace-pre-line flex-1">{STORY_LINES[1]}</p>
+                        <ChevronDown size={28} className="text-[#0ea5e9] animate-bounce ml-4 flex-shrink-0" />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Step 2: Worried leaning character at table */}
+                  {storyStep === 2 && (
+                    <div className="w-full max-w-3xl aspect-[21/9] border-[5px] border-[#0ea5e9] bg-white rounded-2xl relative shadow-2xl mb-8 animate-in slide-in-from-bottom-4 duration-500 overflow-visible pointer-events-none">
+                      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                        <div className="absolute top-10 left-10 w-32 h-32 border-[5px] border-[#0ea5e9] flex bg-slate-50"><div className="w-1/2 border-r-[5px] border-[#0ea5e9] h-full"></div><div className="absolute top-1/2 w-full border-t-[5px] border-[#0ea5e9]"></div></div>
+                        <div className="absolute bottom-0 left-0 w-full h-32 border-t-[5px] border-[#0ea5e9] bg-white flex justify-center z-10"><div className="w-[90%] h-4 border-b-[5px] border-[#0ea5e9]"></div></div>
+                        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 w-72 h-24 border-[5px] border-[#0ea5e9] bg-white rounded-sm flex items-center justify-center z-20"><MapIconSvg className="text-slate-300 w-16 h-16" strokeWidth={1} /></div>
+                        <div className="absolute bottom-28 left-48 flex flex-col items-center z-0"><div className="w-20 h-20 rounded-full border-[5px] border-[#0ea5e9] bg-white"></div><div className="w-[5px] h-24 bg-[#0ea5e9] rounded-full"></div></div>
+                        <div className="absolute bottom-4 left-8 w-40 h-48 z-20 transform translate-y-4"><CharacterBelowAvg /></div>
+                      </div>
+                      <div className="absolute top-[-30px] right-[-20px] sm:top-[-40px] sm:right-[-40px] bg-white border-[4px] border-[#0ea5e9] rounded-3xl p-6 w-[60%] max-w-[320px] shadow-2xl z-[150] animate-in zoom-in duration-300 pointer-events-auto cursor-default" onClick={(e) => e.stopPropagation()}>
+                         <p className="text-[#0ea5e9] font-bold text-sm sm:text-lg leading-snug">{STORY_LINES[2]}</p>
+                         <div className="absolute -bottom-[22px] left-10 w-0 h-0 border-l-[18px] border-r-[18px] border-t-[24px] border-l-transparent border-r-transparent border-t-[#0ea5e9]"></div>
+                      </div>
+                    </div>
+                  )}
+                  <button onClick={(e) => { e.stopPropagation(); if (storyStep < 2) setStoryStep(p => p + 1); else setGameState('prep'); }} className="mt-8 bg-[#0ea5e9] text-white px-12 py-4 rounded-full font-black text-xl shadow-xl hover:bg-[#0284c7] transition-colors pointer-events-auto active:scale-95">Next</button>
                 </div>
               )}
 
